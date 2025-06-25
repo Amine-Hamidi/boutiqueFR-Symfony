@@ -54,7 +54,18 @@
 </header>
 
 <main>
-{% block body %} {% endblock %}
+
+    <div class="container">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert mt-4 alert-{{ label }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+
+    {% block body %} {% endblock %}
 
     <footer class="container">
         <p>&copy; 2025 La Boutique Française Amine HAMIDI <a href="#">CGV</a> &middot; <a href="#">CGU</a></p>
