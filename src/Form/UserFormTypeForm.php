@@ -44,11 +44,7 @@ class UserFormTypeForm extends AbstractType
                 'type' => PasswordType::class,
                 'constraints' =>
                 [
-                    new Length(
-                    [
-                        'min' => 6,
-                        'max' => 30
-                   ])
+                    new Length(min: 6,max: 30)
                 ],
                 'first_options'  =>
                     [
@@ -61,18 +57,17 @@ class UserFormTypeForm extends AbstractType
                     ],
                 'second_options' =>
                 [
-                        'label'=>'Confirmez votre mot de passe',
-                        'attr'=>
-                        [
-                            'placeholder'=>"Confirmez votre mot de passe"
-                        ]
+                    'label'=>'Confirmez votre mot de passe',
+                    'attr'=> [
+                        'placeholder'=>"Confirmez votre mot de passe"
+                    ]
                 ],
                 'mapped' => false,
             ])
-                ->add('submit', SubmitType::class,[
-                'label'=>"S'inscrire",
-                'attr'=>[
-                    'class'=>"btn btn-success"
+            ->add('submit', SubmitType::class, [
+                'label' => "S'inscrire",
+                'attr' => [
+                    'class' => "btn btn-success"
                 ]
             ]);
     }
@@ -81,10 +76,7 @@ class UserFormTypeForm extends AbstractType
     {
         $resolver->setDefaults([
             'constraints'=> [
-                new UniqueEntity([
-                    'entityClass'=> User::class,
-                    'fields' => 'email'
-                ])
+                new UniqueEntity(entityClass: User::class, fields: ['email'])
             ],
             'data_class' => User::class,
         ]);

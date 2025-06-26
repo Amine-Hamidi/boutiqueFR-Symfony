@@ -30,11 +30,7 @@ class PasswordUserForm extends AbstractType
                 'type' => PasswordType::class,
                 'constraints' =>
                 [
-                    new Length(
-                    [
-                        'min' => 6,
-                        'max' => 30
-                   ])
+                    new Length(min: 6, max: 30)
                 ],
                 'first_options'  =>
                     [
